@@ -6,8 +6,7 @@ import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vite.dev/config/
 export default defineConfig({
-  // dev tools can be disabled by commenting out vueDevTools()
-  plugins: [vue(), vueDevTools()],
+  plugins: [vue()], //, vueDevTools()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
