@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Test from "../components/testComponent.vue";
+</script>
 
 <template>
   <main>
-    <h1>hello</h1>
+    <Test />
   </main>
 </template>
