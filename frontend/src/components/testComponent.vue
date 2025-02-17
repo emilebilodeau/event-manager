@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 
-const title = "Test";
+defineProps({
+  title: {
+    type: String,
+    default: "Test",
+  },
+});
 </script>
 
 <template>
