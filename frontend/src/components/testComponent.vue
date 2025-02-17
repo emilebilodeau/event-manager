@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 
 defineProps({
   title: {
@@ -10,5 +10,5 @@ defineProps({
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
+  <h1 class="text-2xl">{{ title }}</h1>
 </template>
