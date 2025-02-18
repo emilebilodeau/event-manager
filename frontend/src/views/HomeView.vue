@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Banner from "@/components/Banner.vue";
+import HomeMain from "@/components/HomeMain.vue";
 </script>
 
 <template>
@@ -8,6 +9,6 @@ import Banner from "@/components/Banner.vue";
       title="Event Manager"
       subtitle="Manage your parties, meetings, and more"
     />
-    <!-- add more components here -->
+    <HomeMain />
   </main>
 </template>

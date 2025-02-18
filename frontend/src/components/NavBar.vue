@@ -25,7 +25,7 @@ const isActiveLink = (routePath: string) => {
               isActiveLink('/events') ? 'bg-blue-900' : '',
               'link-element',
             ]"
-            >Events</RouterLink
+            >Event List</RouterLink
           >
         </div>
       </div>
@@ -33,7 +33,7 @@ const isActiveLink = (routePath: string) => {
   </header>
 </template>
 
-<style lang="css">
+<style>
 .link-element {
   @apply hover:bg-gray-900 text-white px-3 py-2 rounded-md;
 }
