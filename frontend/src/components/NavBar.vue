@@ -16,25 +16,14 @@ const isActiveLink = (routePath: string) => {
         <div class="flex space-x-2 ml-auto">
           <RouterLink
             to="/"
-            :class="[
-              isActiveLink('/') ? 'bg-blue-900' : '',
-              'hover:bg-gray-900',
-              'text-white',
-              'px-3',
-              'py-2',
-              'rounded-md',
-            ]"
+            :class="[isActiveLink('/') ? 'bg-blue-900' : '', 'link-element']"
             >Home</RouterLink
           >
           <RouterLink
             to="/events"
             :class="[
               isActiveLink('/events') ? 'bg-blue-900' : '',
-              'hover:bg-gray-900',
-              'text-white',
-              'px-3',
-              'py-2',
-              'rounded-md',
+              'link-element',
             ]"
             >Events</RouterLink
           >
@@ -43,3 +32,9 @@ const isActiveLink = (routePath: string) => {
     </nav>
   </header>
 </template>
+
+<style lang="css">
+.link-element {
+  @apply hover:bg-gray-900 text-white px-3 py-2 rounded-md;
+}
+</style>
