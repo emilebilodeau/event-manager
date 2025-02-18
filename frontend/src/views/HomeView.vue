@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import Test from "@/components/TestComponent.vue";
+import Banner from "@/components/Banner.vue";
+import HomeMain from "@/components/HomeMain.vue";
 </script>
 
 <template>
   <main>
-    <Test title="Test Component" />
+    <Banner
+      title="Event Manager"
+      subtitle="Manage your parties, meetings, and more"
+    />
+    <HomeMain />
   </main>
 </template>
