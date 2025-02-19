@@ -32,3 +32,6 @@ frontned/cypress/screenshots/
 # custom
 notes.txt
 practice
+venv
+__pycache__
+.env
