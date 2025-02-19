@@ -15,6 +15,11 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 # currently for local developement only
 CORS(app, origins=["http://localhost:5173"])
 
-@app.route("/test", methods=["GET"])
+@app.route("/event/test", methods=["GET"])
 def get_events():
-    return {"message": "CORS works!"}
+    result = {
+        "message" : "CORS works!",
+        "events" : ["event1", "event2", "event3"]
+    }
+
+    return result
