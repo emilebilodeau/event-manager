@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import type { Ref } from "vue";
+import { reactive } from "vue";
 
 interface InputData {
   [key: string]: string | number;
 }
 
-const eventQuestions: Ref<string[]> = ref([
+const eventQuestions: string[] = [
   "Event Name",
   "Description",
   "Date",
-]);
+  "Location",
+];
 
-const data: Ref<InputData> = ref({});
+// NOTE: put input data in here once figured out how
+const data: InputData = reactive({});
 
 const submitData = () => {
   alert("Event Created!");
@@ -26,7 +27,7 @@ const submitData = () => {
         @submit.prevent="submitData"
         class="bg-blue-400 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div v-for="question in eventQuestions" :key="question" class="mb-4">
+        <div v-for="question in eventQuestions" :key="question" class="mb-6">
           <label
             class="block text-black text-sm font-bold mb-2"
             :for="question"
@@ -37,13 +38,13 @@ const submitData = () => {
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             :id="question"
             type="text"
-            placeholder="Type here"
+            placeholder="Type here..."
           />
         </div>
         <div class="flex items-center justify-between">
           <button
             class="bg-blue-900 hover:bg-blue-950 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
+            type="submit"
           >
             Submit
           </button>
