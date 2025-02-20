@@ -27,7 +27,7 @@
 
 <style scoped>
 .link-button {
-  @apply inline-block bg-blue-900 text-white rounded-lg px-4 py-2 hover:bg-gray-900;
+  @apply inline-block bg-blue-900 text-white rounded-lg px-4 py-2 hover:bg-blue-950;
 }
 
 .card {

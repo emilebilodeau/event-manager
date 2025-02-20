@@ -35,6 +35,6 @@ const isActiveLink = (routePath: string) => {
 
 <style scoped>
 .link-element {
-  @apply hover:bg-gray-900 text-white px-3 py-2 rounded-md;
+  @apply hover:bg-blue-950 text-white px-3 py-2 rounded-md;
 }
 </style>
