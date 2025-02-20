@@ -33,7 +33,7 @@ const isActiveLink = (routePath: string) => {
   </header>
 </template>
 
-<style>
+<style scoped>
 .link-element {
   @apply hover:bg-gray-900 text-white px-3 py-2 rounded-md;
 }
