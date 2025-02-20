@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import type { Ref } from "vue";
 
 interface EventsData {
-  events: [];
+  events: string[];
   test: string;
 }
 
-const data = ref([]);
+interface Data {
+  [key: string]: string[] | string;
+}
+
+const data: Ref<Data> = ref({});
 
 onMounted(async () => {
   try {
@@ -14,7 +19,8 @@ onMounted(async () => {
     const res: EventsData = await response.json();
     console.log("Status Code:", response.status);
     console.log(res);
-    data.value = res.events;
+    data.value["events"] = res.events;
+    data.value["test"] = res.test;
   } catch (error) {
     console.log(error);
   }
@@ -25,8 +31,8 @@ onMounted(async () => {
   <main>
     <section>
       <h1 class="text-2xl">Event List</h1>
-      <p>List of events goes here</p>
-      <p v-for="event in data" :key="event">
+      <p>List of events goes here: {{ data.test }}</p>
+      <p v-for="event in data.events" :key="event">
         {{ event }}
       </p>
     </section>
