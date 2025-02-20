@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import type { Ref } from "vue";
+import axios from "axios";
 
 interface EventsData {
   events: string[];
@@ -15,8 +16,8 @@ const data: Ref<Data> = ref({});
 
 onMounted(async () => {
   try {
-    const response = await fetch("http://127.0.0.1:5000/events/test");
-    const res: EventsData = await response.json();
+    const response = await axios.get("http://127.0.0.1:5000/events/test");
+    const res: EventsData = response.data;
     console.log("Status Code:", response.status);
     console.log(res);
     data.value["events"] = res.events;
