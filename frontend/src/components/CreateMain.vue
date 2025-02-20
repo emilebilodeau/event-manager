@@ -5,17 +5,22 @@ interface InputData {
   [key: string]: string | number;
 }
 
-const eventQuestions: string[] = [
-  "Event Name",
-  "Description",
-  "Date",
-  "Location",
+const eventQuestions: { [key: string]: string }[] = [
+  { display: "Event Name", name: "name" },
+  { display: "Description", name: "description" },
+  { display: "Date", name: "date" },
+  { display: "Location", name: "location" },
 ];
 
-// NOTE: put input data in here once figured out how
 const data: InputData = reactive({});
 
+eventQuestions.forEach((obj) => {
+  data[obj.name] = "";
+});
+
+// TODO: install and use axios before implenting functionality
 const submitData = () => {
+  console.log(data);
   alert("Event Created!");
 };
 </script>
@@ -27,16 +32,21 @@ const submitData = () => {
         @submit.prevent="submitData"
         class="bg-blue-400 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div v-for="question in eventQuestions" :key="question" class="mb-6">
+        <div
+          v-for="question in eventQuestions"
+          :key="question.name"
+          class="mb-6"
+        >
           <label
             class="block text-black text-sm font-bold mb-2"
-            :for="question"
+            :for="question.name"
           >
-            {{ question }}
+            {{ question.display }}
           </label>
           <input
+            v-model="data[question.name]"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            :id="question"
+            :id="question.name"
             type="text"
             placeholder="Type here..."
           />
