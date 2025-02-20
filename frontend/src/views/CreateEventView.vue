@@ -1,3 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Banner from "@/components/Banner.vue";
+import CreateMain from "@/components/CreateMain.vue";
+</script>
 
-<template></template>
+<template>
+  <Banner title="Create an Event" subtitle="" />
+  <CreateMain />
+</template>
