@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import axios from "axios";
+import router from "@/router";
 
 interface InputData {
   [key: string]: string | number;
@@ -29,6 +30,8 @@ const submitData = async () => {
     );
     if ((response.status = 201)) {
       alert("Event successfully created!");
+      router.push({ name: "home" });
+      router.go(1);
     }
   } catch (err: any) {
     if (err.response) {

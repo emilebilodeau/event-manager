@@ -4,6 +4,8 @@ import CreateMain from "@/components/CreateMain.vue";
 </script>
 
 <template>
-  <Banner title="Create an Event" subtitle="" />
-  <CreateMain />
+  <main>
+    <Banner title="Create an Event" subtitle="" />
+    <CreateMain />
+  </main>
 </template>
