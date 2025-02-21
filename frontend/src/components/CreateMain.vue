@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import axios from "axios";
 
 interface InputData {
   [key: string]: string | number;
@@ -18,10 +19,32 @@ eventQuestions.forEach((obj) => {
   data[obj.name] = "";
 });
 
-// TODO: install and use axios before implenting functionality
-const submitData = () => {
+const submitData = async () => {
   console.log(data);
-  alert("Event Created!");
+
+  try {
+    const response = await axios.post(
+      "http://127.0.0.1:5000/events/create",
+      data
+    );
+    if ((response.status = 201)) {
+      alert("Event successfully created!");
+    }
+  } catch (err: any) {
+    if (err.response) {
+      // server responded with a status code outside 2xx
+      console.error("Server Error:", err.response.data);
+      alert(`Error: ${err.response.data.error}`);
+    } else if (err.request) {
+      // request was made but no response received
+      console.error("No Response from Server:", err.request);
+      alert("No response from server. Please try again.");
+    } else {
+      // something else happened (e.g., network issues)
+      console.error("Unexpected Error:", err.message);
+      alert("Unexpected error occurred. Please try again.");
+    }
+  }
 };
 </script>
 
