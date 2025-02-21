@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import EventList from "@/views/EventListView.vue";
+import EventListView from "@/views/EventListView.vue";
 import TempView from "@/views/TempView.vue";
+import CreateEventView from "@/views/CreateEventView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,7 +15,12 @@ const router = createRouter({
     {
       path: "/events",
       name: "events",
-      component: EventList,
+      component: EventListView,
+    },
+    {
+      path: "/create",
+      name: "create",
+      component: CreateEventView,
     },
     // NOTE: temporary routing, replace with real component
     {
