@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import EventListView from "@/views/EventListView.vue";
-import TempView from "@/views/TempView.vue";
+import NotFoundView from "@/views/NotFoundView.vue";
 import CreateEventView from "@/views/CreateEventView.vue";
 
 const router = createRouter({
@@ -22,11 +22,10 @@ const router = createRouter({
       name: "create",
       component: CreateEventView,
     },
-    // NOTE: temporary routing, replace with real component
     {
-      path: "/soon",
-      name: "soon",
-      component: TempView,
+      path: "/:catchAll(.*)",
+      name: "not-found",
+      component: NotFoundView,
     },
   ],
 });
