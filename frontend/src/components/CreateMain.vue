@@ -4,20 +4,35 @@ import axios from "axios";
 import router from "@/router";
 
 interface InputData {
-  [key: string]: string | number;
+  [key: string]: string | number | Record<string, string | number>;
+  location: Record<string, string | number>;
 }
 
-const eventQuestions: { [key: string]: string }[] = [
+const textQuestions: { [key: string]: string }[] = [
   { display: "Event Name", name: "name" },
   { display: "Description", name: "description" },
+  // NOTE: date will need to be a timestamp, probably using a date picker...
+  // ...might need to be moved somewhere else
   { display: "Date", name: "date" },
-  { display: "Location", name: "location" },
 ];
 
-const data: InputData = reactive({});
+const locationQuestion: { [key: string]: string }[] = [
+  { display: "Address", name: "address" },
+  { display: "City", name: "city" },
+  { display: "State", name: "state" },
+];
 
-eventQuestions.forEach((obj) => {
+const data: InputData = reactive({
+  location: {},
+});
+
+textQuestions.forEach((obj) => {
   data[obj.name] = "";
+});
+
+// NOTE: location will be a subdocument, and will include a map later
+locationQuestion.forEach((obj) => {
+  data.location[obj.name] = "";
 });
 
 const submitData = async () => {
@@ -58,21 +73,36 @@ const submitData = async () => {
         @submit.prevent="submitData"
         class="bg-blue-400 shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
+        <h1 class="section-header">General Information</h1>
         <div
-          v-for="question in eventQuestions"
+          v-for="question in textQuestions"
           :key="question.name"
           class="mb-6"
         >
-          <label
-            class="block text-black text-sm font-bold mb-2"
-            :for="question.name"
-          >
+          <label class="section-label" :for="question.name">
             {{ question.display }}
           </label>
           <input
             v-model="data[question.name]"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="input-element focus:outline-none focus:shadow-outline"
             :id="question.name"
+            type="text"
+            placeholder="Type here..."
+          />
+        </div>
+        <h1 class="section-header">Location Information</h1>
+        <div
+          v-for="locationq in locationQuestion"
+          :key="locationq.name"
+          class="mb-6"
+        >
+          <label class="section-label" :for="locationq.name">
+            {{ locationq.display }}
+          </label>
+          <input
+            v-model="data.location[locationq.name]"
+            class="input-element focus:outline-none focus:shadow-outline"
+            :id="locationq.name"
             type="text"
             placeholder="Type here..."
           />
@@ -89,3 +119,17 @@ const submitData = async () => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.section-header {
+  @apply block text-2xl text-black font-bold mb-4;
+}
+
+.section-label {
+  @apply block text-black text-lg font-bold mb-2;
+}
+
+.input-element {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+</style>

@@ -16,12 +16,12 @@ CORS(app, origins=["http://localhost:5173"])
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 client = MongoClient(app.config["MONGO_URI"])
+database = client.get_database("event_manager")
 
 @app.route("/events/create", methods=["POST"])
 def create_event():
     """ Creates a new event """
     try:
-        database = client.get_database("event_manager")
         event_manager_db = database.get_collection("events")
         
         data = request.get_json()
